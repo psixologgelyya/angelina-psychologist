@@ -1,4 +1,789 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="uk" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Водяник Ангеліна — психолог | Онлайн консультації</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0f0f0f;
+      --color-surface: #1a1a1a;
+      --color-text: #e8e4df;
+      --color-primary: #c9a86c;
+      --color-secondary: #8b7355;
+    }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+    }
+    .font-serif { font-family: 'Cormorant Garamond', serif; }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--color-primary);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .page { display: none; opacity: 0; transition: opacity 0.5s ease; }
+    .page.active { display: block; opacity: 1; }
+    .card-hover {
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(201, 168, 108, 0.1);
+    }
+    .gold-gradient {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #d4b896 50%, var(--color-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .btn-primary {
+      background: transparent;
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: var(--color-primary);
+      color: var(--color-bg);
+    }
+    .decorative-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .input-field {
+      background: var(--color-surface);
+      border: 1px solid rgba(201, 168, 108, 0.2);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(201, 168, 108, 0.1);
+    }
+    .testimonial-card {
+      background: linear-gradient(145deg, var(--color-surface) 0%, rgba(26, 26, 26, 0.8) 100%);
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto">
+  <div id="app" class="min-h-full w-full"><!-- Navigation -->
+   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="background: transparent;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+     <div class="flex items-center justify-between h-20"><a href="#" onclick="navigateTo('home')" class="font-serif text-2xl tracking-wide" style="color: var(--color-primary);"> <span id="nav-name">Водяник Ангеліна</span> </a> <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-10"><a href="#" onclick="navigateTo('home')" class="nav-link text-sm tracking-widest uppercase active" data-page="home">Головна</a> <a href="#" onclick="navigateTo('about')" class="nav-link text-sm tracking-widest uppercase" data-page="about">Про мене</a> <a href="#" onclick="navigateTo('services')" class="nav-link text-sm tracking-widest uppercase" data-page="services">Послуги</a> <a href="#" onclick="navigateTo('testimonials')" class="nav-link text-sm tracking-widest uppercase" data-page="testimonials">Відгуки</a> <a href="#" onclick="navigateTo('contact')" class="nav-link text-sm tracking-widest uppercase" data-page="contact">Контакти</a>
+      </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden" onclick="toggleMobileMenu()">
+       <svg class="w-6 h-6" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden" style="background: var(--color-bg);">
+     <div class="px-6 py-8 space-y-6"><a href="#" onclick="navigateTo('home'); toggleMobileMenu();" class="block text-sm tracking-widest uppercase">Головна</a> <a href="#" onclick="navigateTo('about'); toggleMobileMenu();" class="block text-sm tracking-widest uppercase">Про мене</a> <a href="#" onclick="navigateTo('services'); toggleMobileMenu();" class="block text-sm tracking-widest uppercase">Послуги</a> <a href="#" onclick="navigateTo('testimonials'); toggleMobileMenu();" class="block text-sm tracking-widest uppercase">Відгуки</a> <a href="#" onclick="navigateTo('contact'); toggleMobileMenu();" class="block text-sm tracking-widest uppercase">Контакти</a>
+     </div>
+    </div>
+   </nav><!-- Home Page -->
+   <div id="page-home" class="page active"><!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden"><!-- Background Pattern -->
+     <div class="absolute inset-0" style="background: radial-gradient(ellipse at 30% 20%, rgba(201, 168, 108, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(139, 115, 85, 0.05) 0%, transparent 50%);"></div><!-- Decorative Elements -->
+     <div class="absolute top-20 left-10 w-px h-32" style="background: linear-gradient(to bottom, transparent, var(--color-primary), transparent);"></div>
+     <div class="absolute bottom-20 right-10 w-px h-32" style="background: linear-gradient(to bottom, transparent, var(--color-primary), transparent);"></div>
+     <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <p class="text-sm tracking-[0.3em] uppercase mb-6 opacity-0 animate-fade-in-up" style="color: var(--color-secondary);">Експозиційна терапія • Recovery Specialist</p>
+      <h1 id="hero-title" class="font-serif text-5xl md:text-7xl lg:text-8xl font-light mb-8 opacity-0 animate-fade-in-up delay-100" style="color: var(--color-text); line-height: 1.1;">Структурована робота<br><span class="text-gradient">з тривогою, ОКР та залежностями</span></h1>
+      <div class="decorative-line mx-auto mb-8 opacity-0 animate-fade-in-up delay-200"></div>
+      <p id="hero-subtitle" class="text-lg md:text-xl font-light mb-12 opacity-0 animate-fade-in-up delay-300" style="color: var(--color-text); opacity: 0.8;">Робота не з історіями, а з механізмами.<br class="hidden md:block">
+        Зміна нейронних зв'язків через експозицію та десенсибілізацію.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up delay-400"><button onclick="navigateTo('contact')" class="btn-primary px-10 py-4 text-sm tracking-widest uppercase"> Записатися на консультацію </button> <button onclick="navigateTo('about')" class="px-10 py-4 text-sm tracking-widest uppercase" style="color: var(--color-text); opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'"> Дізнатися більше </button>
+      </div>
+     </div><!-- Scroll Indicator -->
+     <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+      <div class="w-px h-16" style="background: linear-gradient(to bottom, var(--color-primary), transparent);"></div>
+     </div>
+    </section><!-- Preview Services -->
+    <section class="py-32 px-6">
+     <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-20">
+       <p class="text-sm tracking-[0.3em] uppercase mb-4" style="color: var(--color-secondary);">Як я можу допомогти</p>
+       <h2 class="font-serif text-4xl md:text-5xl" style="color: var(--color-text);">Напрямки роботи</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+       <div class="card-hover p-10 rounded-sm" style="background: var(--color-surface); border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-8" style="background: rgba(201, 168, 108, 0.1);">
+         <svg class="w-8 h-8" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-4" style="color: var(--color-text);">Робота з тривожними розладами</h3>
+        <p class="font-light leading-relaxed" style="color: var(--color-text); opacity: 0.7;">Зниження гіперконтролю, десенсибілізація до невизначеності, переробка катастрофічних схем мислення</p>
+       </div>
+       <div class="card-hover p-10 rounded-sm" style="background: var(--color-surface); border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-8" style="background: rgba(201, 168, 108, 0.1);">
+         <svg class="w-8 h-8" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+         </svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-4" style="color: var(--color-text);">ОКР (нав'язливо-компульсивний розлад)</h3>
+        <p class="font-light leading-relaxed" style="color: var(--color-text); opacity: 0.7;">Розривання циклу «нав'язлива думка → ритуал». Експозиція без компульсій і переконування себе</p>
+       </div>
+       <div class="card-hover p-10 rounded-sm" style="background: var(--color-surface); border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-8" style="background: rgba(201, 168, 108, 0.1);">
+         <svg class="w-8 h-8" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div>
+        <h3 class="font-serif text-2xl mb-4" style="color: var(--color-text);">Робота з залежностями</h3>
+        <p class="font-light leading-relaxed" style="color: var(--color-text); opacity: 0.7;">Формування витримки імпульсу, стабілізація нервової системи, побудова нової поведінкової моделі</p>
+       </div>
+      </div>
+      <div class="text-center mt-16"><button onclick="navigateTo('services')" class="btn-primary px-10 py-4 text-sm tracking-widest uppercase"> Всі послуги </button>
+      </div>
+     </div>
+    </section>
+   </div><!-- About Page -->
+   <div id="page-about" class="page">
+    <section class="pt-32 pb-20 px-6">
+     <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-20">
+       <p class="text-sm tracking-[0.3em] uppercase mb-4" style="color: var(--color-secondary);">Знайомство</p>
+       <h1 id="about-title" class="font-serif text-5xl md:text-6xl" style="color: var(--color-text);">Про мене</h1>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-16 items-center"><!-- Photo placeholder -->
+       <div class="relative">
+        <div class="aspect-[3/4] rounded-sm overflow-hidden" style="background: linear-gradient(145deg, var(--color-surface), rgba(201, 168, 108, 0.1));">
+         
+<img src="photo_2026-02-25_18-20-26.jpg" class="w-full h-full object-cover" alt="Психолог фото">
+<div class="grid grid-cols-2 gap-2 mt-2">
+  <img src="photo_2026-02-25_18-21-13.jpg" class="w-full h-40 object-cover" alt="Фото 2">
+  <img src="photo_2026-02-25_18-21-17.jpg" class="w-full h-40 object-cover" alt="Фото 3">
+</div>
+
+        </div><!-- Decorative frame -->
+        <div class="absolute -bottom-4 -right-4 w-full h-full border rounded-sm -z-10" style="border-color: var(--color-primary); opacity: 0.3;"></div>
+       </div><!-- Content -->
+       <div>
+        <h2 class="font-serif text-3xl mb-6" style="color: var(--color-text);"><span id="about-name">Recovery Specialist</span></h2>
+        <div class="decorative-line mb-8"></div>
+        <p class="text-lg font-light leading-relaxed mb-6" style="color: var(--color-text); opacity: 0.8;">Психолог і Recovery Specialist з фокусом на експозиційну терапію та десенсибілізацію. Спеціалізуюся на роботі з тривожними розладами, ОКР та залежностями — розладами, які підтримуються не важкою патологією, а закріпленими нейронними зв'язками.</p>
+        <p class="font-light leading-relaxed mb-6" style="color: var(--color-text); opacity: 0.8;">Мозок пластичний. То, що було навчено, можна переналаштувати.</p>
+        <p class="font-light leading-relaxed mb-8" style="color: var(--color-text); opacity: 0.7;">Я працюю структуровано і системно — не з історіями, а з механізмами, які підтримують розлад. Робота зосереджена на практичних змінах і реальному відновленні контролю над своїм життям. Онлайн-формат дозволяє мені працювати з клієнтами з будь-якої точки світу.</p>
+        <div class="grid grid-cols-2 gap-6 mb-10">
+         <div class="p-6 rounded-sm" style="background: var(--color-surface);">
+          <p class="font-serif text-4xl mb-2" style="color: var(--color-primary);">10+</p>
+          <p class="text-sm uppercase tracking-wider" style="color: var(--color-text); opacity: 0.6;">років практики</p>
+         </div>
+         <div class="p-6 rounded-sm" style="background: var(--color-surface);">
+          <p class="font-serif text-4xl mb-2" style="color: var(--color-primary);">1000+</p>
+          <p class="text-sm uppercase tracking-wider" style="color: var(--color-text); opacity: 0.6;">успішних випадків</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Education & Certifications -->
+      <div class="mt-24">
+       <h3 class="font-serif text-3xl text-center mb-12" style="color: var(--color-text);">Освіта та сертифікація</h3>
+       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="p-8 rounded-sm" style="background: var(--color-surface); border-left: 2px solid var(--color-primary);">
+         <p class="text-sm uppercase tracking-wider mb-3" style="color: var(--color-primary);">2008 - 2013</p>
+         <h4 class="font-serif text-xl mb-2" style="color: var(--color-text);">Магістр психології</h4>
+         <p class="font-light" style="color: var(--color-text); opacity: 0.7;">Київський національний університет імені Тараса Шевченка</p>
+        </div>
+        <div class="p-8 rounded-sm" style="background: var(--color-surface); border-left: 2px solid var(--color-primary);">
+         <p class="text-sm uppercase tracking-wider mb-3" style="color: var(--color-primary);">2014 - 2017</p>
+         <h4 class="font-serif text-xl mb-2" style="color: var(--color-text);">КПТ сертифікація</h4>
+         <p class="font-light" style="color: var(--color-text); opacity: 0.7;">Міжнародний інститут когнітивно-поведінкової терапії</p>
+        </div>
+        <div class="p-8 rounded-sm" style="background: var(--color-surface); border-left: 2px solid var(--color-primary);">
+         <p class="text-sm uppercase tracking-wider mb-3" style="color: var(--color-primary);">2018 - 2020</p>
+         <h4 class="font-serif text-xl mb-2" style="color: var(--color-text);">Гештальт-терапія</h4>
+         <p class="font-light" style="color: var(--color-text); opacity: 0.7;">Українська спілка психотерапевтів</p>
+        </div>
+       </div>
+      </div><!-- Values -->
+      <div class="mt-24">
+       <h3 class="font-serif text-3xl text-center mb-12" style="color: var(--color-text);">Мої цінності</h3>
+       <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center">
+         <div class="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style="background: rgba(201, 168, 108, 0.1);">
+          <svg class="w-10 h-10" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+         </div>
+         <h4 class="font-serif text-xl mb-2" style="color: var(--color-text);">Конфіденційність</h4>
+         <p class="font-light text-sm" style="color: var(--color-text); opacity: 0.7;">Повна приватність вашої інформації</p>
+        </div>
+        <div class="text-center">
+         <div class="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style="background: rgba(201, 168, 108, 0.1);">
+          <svg class="w-10 h-10" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+         </div>
+         <h4 class="font-serif text-xl mb-2" style="color: var(--color-text);">Емпатія</h4>
+         <p class="font-light text-sm" style="color: var(--color-text); opacity: 0.7;">Глибоке розуміння та підтримка</p>
+        </div>
+        <div class="text-center">
+         <div class="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style="background: rgba(201, 168, 108, 0.1);">
+          <svg class="w-10 h-10" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+         </div>
+         <h4 class="font-serif text-xl mb-2" style="color: var(--color-text);">Професіоналізм</h4>
+         <p class="font-light text-sm" style="color: var(--color-text); opacity: 0.7;">Науковий підхід та етика</p>
+        </div>
+        <div class="text-center">
+         <div class="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center" style="background: rgba(201, 168, 108, 0.1);">
+          <svg class="w-10 h-10" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+         </div>
+         <h4 class="font-serif text-xl mb-2" style="color: var(--color-text);">Результат</h4>
+         <p class="font-light text-sm" style="color: var(--color-text); opacity: 0.7;">Фокус на позитивних змінах</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Services Page -->
+   <div id="page-services" class="page">
+    <section class="pt-32 pb-20 px-6">
+     <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-20">
+       <p class="text-sm tracking-[0.3em] uppercase mb-4" style="color: var(--color-secondary);">Що я пропоную</p>
+       <h1 id="services-title" class="font-serif text-5xl md:text-6xl" style="color: var(--color-text);">Мої послуги</h1>
+      </div><!-- Main Services -->
+      <div class="space-y-8"><!-- Service 1 -->
+       <div class="card-hover p-10 rounded-sm grid md:grid-cols-3 gap-8 items-center" style="background: var(--color-surface); border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="md:col-span-2">
+         <h3 class="font-serif text-3xl mb-4" style="color: var(--color-text);">Робота з тривожними розладами</h3>
+         <p class="font-light leading-relaxed mb-6" style="color: var(--color-text); opacity: 0.7;">Тривога підтримується гіперконтролем, катастрофізацією та невимогливістю. Я навчу вас толерувати невизначеність, знизити потребу в контролі та переформатувати ваші катастрофічні сценарії. Нервова система переналаштовується через вплив та практику.</p>
+         <div class="flex flex-wrap gap-3"><span class="px-4 py-2 text-xs uppercase tracking-wider rounded-full" style="background: rgba(201, 168, 108, 0.1); color: var(--color-primary);">Гіперконтроль</span> <span class="px-4 py-2 text-xs uppercase tracking-wider rounded-full" style="background: rgba(201, 168, 108, 0.1); color: var(--color-primary);">Невизначеність</span> <span class="px-4 py-2 text-xs uppercase tracking-wider rounded-full" style="background: rgba(201, 168, 108, 0.1); color: var(--color-primary);">Катастрофізація</span>
+         </div>
+        </div>
+        <div class="text-center md:text-right">
+         <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--color-secondary);">Онлайн • 50-60 хв</p>
+         <p class="font-serif text-4xl mb-4" style="color: var(--color-primary);">1400 ₴</p><button onclick="navigateTo('contact')" class="btn-primary px-8 py-3 text-sm tracking-widest uppercase"> Записатися </button>
+        </div>
+       </div><!-- Service 2 -->
+       <div class="card-hover p-10 rounded-sm grid md:grid-cols-3 gap-8 items-center" style="background: var(--color-surface); border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="md:col-span-2">
+         <h3 class="font-serif text-3xl mb-4" style="color: var(--color-text);">ОКР (нав'язливо-компульсивний розлад)</h3>
+         <p class="font-light leading-relaxed mb-6" style="color: var(--color-text); opacity: 0.7;">ОКР — це цикл: нав'язлива думка → тривога → ритуал → тимчасове полегшення → посилення циклу. Ми розриваємо цей цикл через експозицію до нав'язливого змісту без виконання компульсій. Мозок вчиться, що ритуали не потрібні.</p>
+         <div class="flex flex-wrap gap-3"><span class="px-4 py-2 text-xs uppercase tracking-wider rounded-full" style="background: rgba(201, 168, 108, 0.1); color: var(--color-primary);">Нав'язливі думки</span> <span class="px-4 py-2 text-xs uppercase tracking-wider rounded-full" style="background: rgba(201, 168, 108, 0.1); color: var(--color-primary);">Ритуали</span> <span class="px-4 py-2 text-xs uppercase tracking-wider rounded-full" style="background: rgba(201, 168, 108, 0.1); color: var(--color-primary);">ERP</span>
+         </div>
+        </div>
+        <div class="text-center md:text-right">
+         <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--color-secondary);">Онлайн • 60 хв</p>
+         <p class="font-serif text-4xl mb-4" style="color: var(--color-primary);">1600 ₴</p><button onclick="navigateTo('contact')" class="btn-primary px-8 py-3 text-sm tracking-widest uppercase"> Записатися </button>
+        </div>
+       </div><!-- Service 3 -->
+       <div class="card-hover p-10 rounded-sm grid md:grid-cols-3 gap-8 items-center" style="background: var(--color-surface); border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="md:col-span-2">
+         <h3 class="font-serif text-3xl mb-4" style="color: var(--color-text);">Робота з залежностями</h3>
+         <p class="font-light leading-relaxed mb-6" style="color: var(--color-text); opacity: 0.7;">Залежність — це нейронний цикл: тригер → імпульс → вживання → полегшення → посилення. Я працюю над розривом циклу, формуванням витримки імпульсу, стабілізацією нервової системи та створенням нової поведінкової моделі. Вихід з залежності — це не лише припинення, це побудова нової системи реагування.</p>
+         <div class="flex flex-wrap gap-3"><span class="px-4 py-2 text-xs uppercase tracking-wider rounded-full" style="background: rgba(201, 168, 108, 0.1); color: var(--color-primary);">Цикл залежності</span> <span class="px-4 py-2 text-xs uppercase tracking-wider rounded-full" style="background: rgba(201, 168, 108, 0.1); color: var(--color-primary);">Витримка імпульсу</span>
+         </div>
+        </div>
+        <div class="text-center md:text-right">
+         <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--color-secondary);">За домовленістю</p>
+         <p class="font-serif text-4xl mb-4" style="color: var(--color-primary);">від 1600 ₴</p><button onclick="navigateTo('contact')" class="btn-primary px-8 py-3 text-sm tracking-widest uppercase"> Зв'язатися </button>
+        </div>
+       </div>
+      </div><!-- How it works -->
+      <div class="mt-24">
+       <h3 class="font-serif text-3xl text-center mb-16" style="color: var(--color-text);">Як проходить робота</h3>
+       <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center relative">
+         <div class="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center gold-gradient"><span class="font-serif text-2xl" style="color: var(--color-bg);">1</span>
+         </div>
+         <h4 class="font-serif text-xl mb-3" style="color: var(--color-text);">Запис</h4>
+         <p class="font-light text-sm" style="color: var(--color-text); opacity: 0.7;">Заповніть форму або зателефонуйте для запису на консультацію</p>
+         <div class="hidden md:block absolute top-8 left-full w-full h-px" style="background: linear-gradient(90deg, var(--color-primary), transparent);"></div>
+        </div>
+        <div class="text-center relative">
+         <div class="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center gold-gradient"><span class="font-serif text-2xl" style="color: var(--color-bg);">2</span>
+         </div>
+         <h4 class="font-serif text-xl mb-3" style="color: var(--color-text);">Знайомство</h4>
+         <p class="font-light text-sm" style="color: var(--color-text); opacity: 0.7;">Перша зустріч для обговорення вашого запиту та очікувань</p>
+         <div class="hidden md:block absolute top-8 left-full w-full h-px" style="background: linear-gradient(90deg, var(--color-primary), transparent);"></div>
+        </div>
+        <div class="text-center relative">
+         <div class="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center gold-gradient"><span class="font-serif text-2xl" style="color: var(--color-bg);">3</span>
+         </div>
+         <h4 class="font-serif text-xl mb-3" style="color: var(--color-text);">Терапія</h4>
+         <p class="font-light text-sm" style="color: var(--color-text); opacity: 0.7;">Регулярні сесії з використанням підібраних методів</p>
+         <div class="hidden md:block absolute top-8 left-full w-full h-px" style="background: linear-gradient(90deg, var(--color-primary), transparent);"></div>
+        </div>
+        <div class="text-center">
+         <div class="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center gold-gradient"><span class="font-serif text-2xl" style="color: var(--color-bg);">4</span>
+         </div>
+         <h4 class="font-serif text-xl mb-3" style="color: var(--color-text);">Результат</h4>
+         <p class="font-light text-sm" style="color: var(--color-text); opacity: 0.7;">Досягнення поставлених цілей та закріплення результатів</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Testimonials Page -->
+   <div id="page-testimonials" class="page">
+    <section class="pt-32 pb-20 px-6">
+     <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-20">
+       <p class="text-sm tracking-[0.3em] uppercase mb-4" style="color: var(--color-secondary);">Досвід клієнтів</p>
+       <h1 class="font-serif text-5xl md:text-6xl" style="color: var(--color-text);">Відгуки</h1>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8"><!-- Testimonial 1 -->
+       <div class="testimonial-card p-10 rounded-sm" style="border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="flex gap-1 mb-6">
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+        </div>
+        <p class="font-serif text-2xl mb-6 leading-relaxed" style="color: var(--color-text);">"Олена допомогла мені пережити один з найскладніших періодів у житті. Її професіоналізм та емпатія створили безпечний простір для роботи над собою."</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(201, 168, 108, 0.2);"><span class="font-serif text-lg" style="color: var(--color-primary);">М</span>
+         </div>
+         <div>
+          <p class="font-medium" style="color: var(--color-text);">Марія К.</p>
+          <p class="text-sm" style="color: var(--color-text); opacity: 0.6;">Індивідуальна терапія</p>
+         </div>
+        </div>
+       </div><!-- Testimonial 2 -->
+       <div class="testimonial-card p-10 rounded-sm" style="border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="flex gap-1 mb-6">
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+        </div>
+        <p class="font-serif text-2xl mb-6 leading-relaxed" style="color: var(--color-text);">"Завдяки сімейній терапії ми з дружиною навчились чути одне одного. Наші стосунки вийшли на новий рівень розуміння та близькості."</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(201, 168, 108, 0.2);"><span class="font-serif text-lg" style="color: var(--color-primary);">О</span>
+         </div>
+         <div>
+          <p class="font-medium" style="color: var(--color-text);">Олександр Д.</p>
+          <p class="text-sm" style="color: var(--color-text); opacity: 0.6;">Сімейна терапія</p>
+         </div>
+        </div>
+       </div><!-- Testimonial 3 -->
+       <div class="testimonial-card p-10 rounded-sm" style="border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="flex gap-1 mb-6">
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+        </div>
+        <p class="font-serif text-2xl mb-6 leading-relaxed" style="color: var(--color-text);">"Панічні атаки більше не керують моїм життям. Олена навчила мене технікам, які працюють. Дякую за повернене відчуття контролю!"</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(201, 168, 108, 0.2);"><span class="font-serif text-lg" style="color: var(--color-primary);">А</span>
+         </div>
+         <div>
+          <p class="font-medium" style="color: var(--color-text);">Анна С.</p>
+          <p class="text-sm" style="color: var(--color-text); opacity: 0.6;">Робота з тривогою</p>
+         </div>
+        </div>
+       </div><!-- Testimonial 4 -->
+       <div class="testimonial-card p-10 rounded-sm" style="border: 1px solid rgba(201, 168, 108, 0.1);">
+        <div class="flex gap-1 mb-6">
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+         <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+         </svg>
+        </div>
+        <p class="font-serif text-2xl mb-6 leading-relaxed" style="color: var(--color-text);">"Онлайн-формат виявився дуже зручним. Якість консультацій нічим не поступається особистим зустрічам. Рекомендую всім, хто цінує свій час."</p>
+        <div class="flex items-center gap-4">
+         <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(201, 168, 108, 0.2);"><span class="font-serif text-lg" style="color: var(--color-primary);">В</span>
+         </div>
+         <div>
+          <p class="font-medium" style="color: var(--color-text);">Віктор П.</p>
+          <p class="text-sm" style="color: var(--color-text); opacity: 0.6;">Онлайн-терапія</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="text-center mt-16"><button onclick="navigateTo('contact')" class="btn-primary px-10 py-4 text-sm tracking-widest uppercase"> Почати свій шлях </button>
+      </div>
+     </div>
+    </section>
+   </div><!-- Contact Page -->
+   <div id="page-contact" class="page">
+    <section class="pt-32 pb-20 px-6">
+     <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-20">
+       <p class="text-sm tracking-[0.3em] uppercase mb-4" style="color: var(--color-secondary);">Запис на консультацію</p>
+       <h1 id="contact-title" class="font-serif text-5xl md:text-6xl" style="color: var(--color-text);">Зв'язатися зі мною</h1>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-16"><!-- Contact Form -->
+       <div class="p-10 rounded-sm" style="background: var(--color-surface); border: 1px solid rgba(201, 168, 108, 0.1);">
+        <h3 class="font-serif text-2xl mb-8" style="color: var(--color-text);">Залиште заявку</h3>
+        <form id="contact-form" onsubmit="handleFormSubmit(event)">
+         <div class="space-y-6">
+          <div><label for="name" class="block text-sm uppercase tracking-wider mb-3" style="color: var(--color-text); opacity: 0.8;">Ваше ім'я *</label> <input type="text" id="name" name="name" required class="w-full px-5 py-4 rounded-sm input-field" style="color: var(--color-text);" placeholder="Введіть ваше ім'я">
+          </div>
+          <div><label for="phone" class="block text-sm uppercase tracking-wider mb-3" style="color: var(--color-text); opacity: 0.8;">Телефон *</label> <input type="tel" id="phone" name="phone" required class="w-full px-5 py-4 rounded-sm input-field" style="color: var(--color-text);" placeholder="+380 XX XXX XX XX">
+          </div>
+          <div><label for="email" class="block text-sm uppercase tracking-wider mb-3" style="color: var(--color-text); opacity: 0.8;">Email</label> <input type="email" id="email" name="email" class="w-full px-5 py-4 rounded-sm input-field" style="color: var(--color-text);" placeholder="your@email.com">
+          </div>
+          <div><label for="service" class="block text-sm uppercase tracking-wider mb-3" style="color: var(--color-text); opacity: 0.8;">Тип консультації</label> <select id="service" name="service" class="w-full px-5 py-4 rounded-sm input-field" style="color: var(--color-text);"> <option value="">Оберіть послугу</option> <option value="individual">Індивідуальна терапія</option> <option value="family">Сімейна терапія</option> <option value="online">Онлайн-консультація</option> <option value="crisis">Кризова підтримка</option> </select>
+          </div>
+          <div><label for="message" class="block text-sm uppercase tracking-wider mb-3" style="color: var(--color-text); opacity: 0.8;">Повідомлення</label> <textarea id="message" name="message" rows="4" class="w-full px-5 py-4 rounded-sm input-field resize-none" style="color: var(--color-text);" placeholder="Розкажіть коротко про ваш запит..."></textarea>
+          </div><button type="submit" class="w-full py-4 text-sm tracking-widest uppercase gold-gradient rounded-sm transition-opacity hover:opacity-90" style="color: var(--color-bg);"> Надіслати заявку </button>
+         </div>
+        </form>
+        <div id="form-success" class="hidden mt-6 p-6 rounded-sm text-center" style="background: rgba(201, 168, 108, 0.1); border: 1px solid var(--color-primary);">
+         <svg class="w-12 h-12 mx-auto mb-4" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+         </svg>
+         <p class="font-serif text-xl mb-2" style="color: var(--color-text);">Дякую за заявку!</p>
+         <p class="font-light" style="color: var(--color-text); opacity: 0.8;">Я зв'яжусь з вами протягом 24 годин.</p>
+        </div>
+       </div><!-- Contact Info -->
+       <div class="space-y-8">
+        <div>
+         <h3 class="font-serif text-2xl mb-8" style="color: var(--color-text);">Контактна інформація</h3>
+         <div class="space-y-6">
+          <div class="flex items-start gap-5">
+           <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(201, 168, 108, 0.1);">
+            <svg class="w-6 h-6" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+           </div>
+           <div>
+            <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--color-secondary);">Телефон</p>
+            <p class="font-serif text-xl" style="color: var(--color-text);">+380 (67) 123-45-67</p>
+           </div>
+          </div>
+          <div class="flex items-start gap-5">
+           <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(201, 168, 108, 0.1);">
+            <svg class="w-6 h-6" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+           </div>
+           <div>
+            <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--color-secondary);">Email</p>
+            <p class="font-serif text-xl" style="color: var(--color-text);">olena@psychologist.ua</p>
+           </div>
+          </div>
+          <div class="flex items-start gap-5">
+           <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(201, 168, 108, 0.1);">
+            <svg class="w-6 h-6" style="color: var(--color-primary);" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+           </div>
+           <div>
+            <p class="text-sm uppercase tracking-wider mb-2" style="color: var(--color-secondary);">Адреса</p>
+            <p class="font-serif text-xl" style="color: var(--color-text);">м. Київ, вул. Хрещатик, 22</p>
+            <p class="font-light mt-1" style="color: var(--color-text); opacity: 0.7;">Офіс 301, 3 поверх</p>
+           </div>
+          </div>
+         </div>
+        </div><!-- Working Hours -->
+        <div class="p-8 rounded-sm" style="background: var(--color-surface); border: 1px solid rgba(201, 168, 108, 0.1);">
+         <h4 class="font-serif text-xl mb-6" style="color: var(--color-text);">Графік роботи</h4>
+         <div class="space-y-3">
+          <div class="flex justify-between"><span class="font-light" style="color: var(--color-text); opacity: 0.8;">Понеділок - П'ятниця</span> <span style="color: var(--color-primary);">09:00 - 20:00</span>
+          </div>
+          <div class="flex justify-between"><span class="font-light" style="color: var(--color-text); opacity: 0.8;">Субота</span> <span style="color: var(--color-primary);">10:00 - 16:00</span>
+          </div>
+          <div class="flex justify-between"><span class="font-light" style="color: var(--color-text); opacity: 0.8;">Неділя</span> <span style="color: var(--color-text); opacity: 0.5;">Вихідний</span>
+          </div>
+         </div>
+        </div><!-- Social Links -->
+        <div>
+         <h4 class="font-serif text-xl mb-6" style="color: var(--color-text);">Соціальні мережі</h4>
+         <div class="flex gap-4"><a href="#" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background: rgba(201, 168, 108, 0.1);">
+           <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+           </svg></a> <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background: rgba(201, 168, 108, 0.1);">
+           <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+           </svg></a> <a href="#" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background: rgba(201, 168, 108, 0.1);">
+           <svg class="w-5 h-5" style="color: var(--color-primary);" fill="currentColor" viewbox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+           </svg></a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Footer -->
+   <footer class="py-12 px-6" style="background: var(--color-surface); border-top: 1px solid rgba(201, 168, 108, 0.1);">
+    <div class="max-w-6xl mx-auto">
+     <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="font-serif text-lg" style="color: var(--color-primary);"><span id="footer-name">Водяник Ангеліна</span></p>
+      <p class="text-sm font-light" style="color: var(--color-text); opacity: 0.6;">© 2024 Всі права захищено</p>
+      <div class="flex gap-8"><a href="#" onclick="navigateTo('home')" class="text-sm hover:opacity-100 transition-opacity" style="color: var(--color-text); opacity: 0.6;">Головна</a> <a href="#" onclick="navigateTo('services')" class="text-sm hover:opacity-100 transition-opacity" style="color: var(--color-text); opacity: 0.6;">Послуги</a> <a href="#" onclick="navigateTo('contact')" class="text-sm hover:opacity-100 transition-opacity" style="color: var(--color-text); opacity: 0.6;">Контакти</a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      psychologist_name: 'Ангелина Водянык',
+      hero_title: 'Структурована робота з тривогою, ОКР та залежностями',
+      hero_subtitle: 'Експозиційна терапія • Десенсибілізація • Зміна механізмів розладу',
+      about_title: 'Про мене',
+      services_title: 'Напрямки роботи',
+      contact_title: 'Почати терапію',
+      background_color: '#0f0f0f',
+      surface_color: '#1a1a1a',
+      text_color: '#e8e4df',
+      primary_color: '#c9a86c',
+      secondary_color: '#8b7355',
+      font_family: 'Montserrat',
+      font_size: 16
+    };
+
+    // Navigation functions
+    let currentPage = 'home';
+
+    function navigateTo(page) {
+      event && event.preventDefault();
+      
+      // Hide current page
+      document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+      });
+      
+      // Show new page
+      const newPage = document.getElementById(`page-${page}`);
+      if (newPage) {
+        newPage.classList.add('active');
+        currentPage = page;
+      }
+      
+      // Update nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.dataset.page === page) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+      }
+    }
+
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(15, 15, 15, 0.95)';
+        navbar.style.backdropFilter = 'blur(10px)';
+      } else {
+        navbar.style.background = 'transparent';
+        navbar.style.backdropFilter = 'none';
+      }
+    });
+
+    // Form submission handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = document.getElementById('contact-form');
+      const success = document.getElementById('form-success');
+      
+      form.style.display = 'none';
+      success.classList.remove('hidden');
+      
+      setTimeout(() => {
+        form.style.display = 'block';
+        success.classList.add('hidden');
+        form.reset();
+      }, 5000);
+    }
+
+    // Element SDK integration
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          const root = document.documentElement;
+          
+          // Apply colors
+          root.style.setProperty('--color-bg', config.background_color || defaultConfig.background_color);
+          root.style.setProperty('--color-surface', config.surface_color || defaultConfig.surface_color);
+          root.style.setProperty('--color-text', config.text_color || defaultConfig.text_color);
+          root.style.setProperty('--color-primary', config.primary_color || defaultConfig.primary_color);
+          root.style.setProperty('--color-secondary', config.secondary_color || defaultConfig.secondary_color);
+          
+          // Apply font
+          const fontFamily = config.font_family || defaultConfig.font_family;
+          const baseFontStack = 'sans-serif';
+          document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+          
+          // Apply font size
+          const fontSize = config.font_size || defaultConfig.font_size;
+          document.body.style.fontSize = `${fontSize}px`;
+          
+          // Update text content
+          const name = config.psychologist_name || defaultConfig.psychologist_name;
+          document.getElementById('nav-name').textContent = name;
+          document.getElementById('about-name').textContent = name;
+          document.getElementById('footer-name').textContent = name;
+          
+          const heroTitle = document.getElementById('hero-title');
+          if (heroTitle) {
+            const titleText = config.hero_title || defaultConfig.hero_title;
+            heroTitle.innerHTML = `${titleText.split(' ').slice(0, -1).join(' ')}<br><span class="text-gradient">${titleText.split(' ').slice(-1)[0]}</span>`;
+          }
+          
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          if (heroSubtitle) {
+            heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          }
+          
+          const aboutTitle = document.getElementById('about-title');
+          if (aboutTitle) {
+            aboutTitle.textContent = config.about_title || defaultConfig.about_title;
+          }
+          
+          const servicesTitle = document.getElementById('services-title');
+          if (servicesTitle) {
+            servicesTitle.textContent = config.services_title || defaultConfig.services_title;
+          }
+          
+          const contactTitle = document.getElementById('contact-title');
+          if (contactTitle) {
+            contactTitle.textContent = config.contact_title || defaultConfig.contact_title;
+          }
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => window.elementSdk.setConfig({ background_color: value })
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => window.elementSdk.setConfig({ surface_color: value })
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => window.elementSdk.setConfig({ primary_color: value })
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => window.elementSdk.setConfig({ secondary_color: value })
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => window.elementSdk.setConfig({ font_family: value })
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => window.elementSdk.setConfig({ font_size: value })
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['psychologist_name', config.psychologist_name || defaultConfig.psychologist_name],
+          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['about_title', config.about_title || defaultConfig.about_title],
+          ['services_title', config.services_title || defaultConfig.services_title],
+          ['contact_title', config.contact_title || defaultConfig.contact_title]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d43a62bd379ca5a',t:'MTc3MjE1MzAxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<div style="position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;">
+  <a href="https://www.instagram.com/psixologgelyya" target="_blank"
+     style="background:#c9a86c;color:#0f0f0f;padding:12px 16px;border-radius:999px;text-decoration:none;font-weight:600;">
+     Instagram
+  </a>
+  <a href="https://wa.me/380986528383" target="_blank"
+     style="background:#25D366;color:white;padding:12px 16px;border-radius:999px;text-decoration:none;font-weight:600;">
+     WhatsApp
+  </a>
+</div>
+
+</body>
+</html><!DOCTYPE html>
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
