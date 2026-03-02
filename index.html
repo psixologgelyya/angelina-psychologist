@@ -52,8 +52,8 @@
       background-image: url('photo_2026-02-25_18-20-26.jpg');
       background-size: cover;
       background-position: center;
-      filter: blur(10px) brightness(0.35); /* Розмиття та затемнення */
-      transform: scale(1.1); /* Щоб не було білих країв при розмитті */
+      filter: blur(10px) brightness(0.35);
+      transform: scale(1.1);
       z-index: -1;
     }
 
@@ -139,7 +139,7 @@
   <div id="page-about" class="page">
     <section class="pt-32 pb-20 px-6">
       <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-        <img src="photo_2026-02-25_18-20-26.jpg" class="w-full rounded-sm shadow-2xl" alt="Ангеліна Вадимівна">
+        <img src="photo_2026-02-25_18-20-26.jpg" class="w-full rounded-sm shadow-2xl" alt="Водяник Ангеліна Вадимівна">
         <div>
           <h2 class="font-serif text-4xl mb-6">Водяник Ангеліна Вадимівна</h2>
           <div class="w-12 h-px bg-[#c9a86c] mb-6"></div>
@@ -147,12 +147,12 @@
           <p class="mb-8 opacity-80 leading-relaxed">Моя мета — не просто обговорювати проблеми, а дати вам конкретні інструменти для зміни механізмів, які підтримують розлад.</p>
           <div class="grid grid-cols-2 gap-4">
             <div class="bg-[#1a1a1a] p-4 text-center">
-              <span class="block text-2xl font-serif text-[#c9a86c]">10+</span>
+              <span class="block text-2xl font-serif text-[#c9a86c]">3+</span>
               <span class="text-[10px] uppercase opacity-50">років практики</span>
             </div>
             <div class="bg-[#1a1a1a] p-4 text-center">
               <span class="block text-2xl font-serif text-[#c9a86c]">1000+</span>
-              <span class="text-[10px] uppercase opacity-50">клієнтів</span>
+              <span class="text-[10px] uppercase opacity-50">випадків</span>
             </div>
           </div>
         </div>
@@ -216,7 +216,7 @@
             </div>
           </div>
 
-          <form onsubmit="alert('Дякую! Я зв\'яжуся з вами.'); return false;" class="space-y-4">
+          <form onsubmit="alert('Дякую! Я зв\\'яжуся з вами.'); return false;" class="space-y-4">
             <input type="text" placeholder="Ваше ім'я" required class="w-full bg-[#0f0f0f] border border-white/10 px-4 py-3 text-sm outline-none focus:border-[#c9a86c]">
             <input type="tel" placeholder="Номер телефону" required class="w-full bg-[#0f0f0f] border border-white/10 px-4 py-3 text-sm outline-none focus:border-[#c9a86c]">
             <textarea placeholder="Ваш запит" class="w-full bg-[#0f0f0f] border border-white/10 px-4 py-3 text-sm outline-none focus:border-[#c9a86c] h-32"></textarea>
@@ -230,19 +230,16 @@
   <!-- Footer -->
   <footer class="py-10 border-t border-white/5 text-center">
     <p class="font-serif text-lg mb-2" style="color: var(--color-primary)">Водяник Ангеліна Вадимівна</p>
-    <p class="text-[10px] opacity-40 uppercase tracking-widest">© 2024 Всі права захищено</p>
+    <p class="text-[10px] opacity-40 uppercase tracking-widest">© 2026 Всі права захищено</p>
   </footer>
 
   <script>
     function navigateTo(pageId) {
-      // Приховати всі сторінки
       document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
       });
-      // Показати потрібну
       document.getElementById('page-' + pageId).classList.add('active');
       
-      // Оновити активне посилання в меню
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
         if(link.getAttribute('data-page') === pageId) link.classList.add('active');
