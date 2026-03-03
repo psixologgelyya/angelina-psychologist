@@ -364,7 +364,37 @@
         </div>
       </div>
     </section>
-  </div>
+  </div<form id="contactForm">
+  <input type="text" id="name" placeholder="Ваше ім'я" required><br><br>
+  <input type="text" id="phone" placeholder="Телефон або Telegram" required><br><br>
+  <textarea id="message" placeholder="Ваше повідомлення" required></textarea><br><br>
+  <button type="submit">Відправити</button>
+</form>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const message = document.getElementById("message").value;
+
+  const text = 
+    "Нова заявка з сайту:%0A%0A" +
+    "Ім'я: " + name + "%0A" +
+    "Контакт: " + phone + "%0A" +
+    "Повідомлення: " + message;
+
+  fetch("https://api.telegram.org/bot8512705759:AAEhPuLXDHXUOsrUmiBOEJpXp20GuCqvCI0/sendMessage?chat_id=447303564&text=" + text)
+  .then(response => {
+    alert("Повідомлення відправлено!");
+    document.getElementById("contactForm").reset();
+  })
+  .catch(error => {
+    alert("Помилка. Спробуйте ще раз.");
+  });
+});
+</script>>
 
   <!-- CONTACT PAGE -->
   <div id="page-contact" class="page">
