@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="uk" class="h-full">
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Водяник Ангеліна Вадимівна — психолог | Онлайн консультації</title>
@@ -26,30 +26,40 @@
       font-size: 16px;
     }
     .font-serif { font-family: 'Cormorant Garamond', serif; }
-    
+
     /* Навігація */
-    .nav-link { 
-      position: relative; 
-      transition: color 0.3s ease; 
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
       cursor: pointer;
       padding: 8px 0;
       font-size: 0.75rem;
     }
     .nav-link::after {
-      content: ''; 
-      position: absolute; 
-      bottom: -4px; 
-      left: 0; 
-      width: 0; 
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
       height: 1px;
-      background: var(--color-primary); 
+      background: var(--color-primary);
       transition: width 0.3s ease;
     }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
 
     /* Сторінки */
-    .page { display: none; opacity: 0; transition: opacity 0.5s ease; }
-    .page.active { display: block; opacity: 1; }
+    .page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .page.active {
+      display: block;
+      opacity: 1;
+    }
 
     /* Мобільне меню */
     .mobile-menu-btn {
@@ -113,12 +123,56 @@
       transition: transform 0.3s ease;
       border-radius: 8px;
     }
-    .card-hover:hover { transform: translateY(-5px); }
+    .card-hover:hover {
+      transform: translateY(-5px);
+    }
+
+    .stats-grid {
+      gap: 1rem;
+    }
+    .stat-item {
+      padding: 1rem;
+    }
+
+    /* Форма */
+    #contactForm {
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 1rem;
+      border: 1px solid rgba(201, 168, 108, 0.1);
+      border-radius: 8px;
+      background: var(--color-surface);
+    }
+    #contactForm input,
+    #contactForm textarea {
+      width: 100%;
+      padding: 8px 12px;
+      margin: 0.5rem 0;
+      border: 1px solid rgba(201, 168, 108, 0.3);
+      border-radius: 4px;
+      background: #0f0f0f;
+      color: #e8e4df;
+      font-size: 14px;
+    }
+    #contactForm button {
+      width: 100%;
+      padding: 10px 16px;
+      background: var(--color-primary);
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    #contactForm button:hover {
+      background: #b8945e;
+    }
 
     /* Адаптивність */
     @media (max-width: 768px) {
       body { font-size: 15px; }
-      
+
       /* Навігація */
       .nav-container .hidden {
         display: none;
@@ -126,7 +180,7 @@
       .mobile-menu-btn {
         display: flex;
       }
-      
+
       /* Hero секція */
       .hero-container {
         min-height: 80vh;
@@ -141,7 +195,7 @@
         font-size: 1.1rem !important;
         padding: 0 20px;
       }
-      
+
       /* Карти */
       .cards-grid {
         grid-template-columns: 1fr;
@@ -151,7 +205,7 @@
       .card-hover {
         padding: 1.5rem;
       }
-      
+
       /* About */
       .about-grid {
         grid-template-columns: 1fr;
@@ -162,7 +216,7 @@
         max-width: 280px;
         margin: 0 auto;
       }
-      
+
       /* Services */
       .services-list {
         padding: 0 1rem;
@@ -170,7 +224,7 @@
       .service-item {
         padding: 1.5rem !important;
       }
-      
+
       /* Contact */
       .contact-grid {
         grid-template-columns: 1fr !important;
@@ -179,9 +233,12 @@
       }
       .form-input {
         padding: 12px 16px !important;
-        font-size: 16px !important; /* Для кращого введення на мобільних */
+        font-size: 16px !important;
       }
-      
+      #contactForm {
+        max-width: 100%;
+      }
+
       /* Футер кнопки */
       .floating-buttons {
         bottom: 20px !important;
@@ -196,7 +253,7 @@
         width: 140px;
         text-align: center;
       }
-      
+
       /* Padding для сторінок */
       .page-padding {
         padding-top: 80px !important;
@@ -207,8 +264,8 @@
     @media (max-width: 480px) {
       h1 { font-size: 2rem !important; }
       .hero-text { font-size: 1rem !important; }
-      .btn-primary { 
-        padding: 12px 20px !important; 
+      .btn-primary {
+        padding: 12px 20px !important;
         font-size: 0.7rem !important;
         width: 100%;
         justify-content: center;
@@ -222,18 +279,10 @@
         max-width: 280px;
       }
     }
-
-    /* Stats grid */
-    .stats-grid {
-      gap: 1rem;
-    }
-    .stat-item {
-      padding: 1rem;
-    }
   </style>
- </head>
- <body class="h-full">
-  
+</head>
+<body class="h-full">
+
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0f0f0f]/90 backdrop-blur-md border-b border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
@@ -285,7 +334,7 @@
 
     <!-- Short Areas -->
     <section class="py-16 sm:py-24 px-4 sm:px-6 bg-[#0f0f0f]">
-      <div class="max-w-6xl mx-auto cards-grid">
+      <div class="max-w-6xl mx-auto cards-grid grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div class="card-hover p-6 sm:p-8">
           <h3 class="font-serif text-xl sm:text-2xl mb-4" style="color: var(--color-primary)">Тривога</h3>
           <p class="text-sm opacity-70">Звільнення від постійного контролю та страху перед майбутнім.</p>
@@ -309,12 +358,12 @@
   <!-- ABOUT PAGE -->
   <div id="page-about" class="page">
     <section class="pt-24 sm:pt-32 pb-20 px-4 sm:px-6 page-padding">
-      <div class="max-w-6xl mx-auto about-grid">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 about-grid">
         <img src="photo_2026-02-25_18-20-26.jpg" class="w-full max-w-xs sm:max-w-none rounded-sm shadow-2xl about-img" alt="Водяник Ангеліна Вадимівна">
         <div class="text-center sm:text-left">
           <h2 class="font-serif text-3xl sm:text-4xl mb-6">Водяник Ангеліна Вадимівна</h2>
           <div class="w-12 h-px bg-[#c9a86c] mx-auto sm:mx-0 mb-6"></div>
-          <p class="mb-6 opacity-80 leading-relaxed text-sm sm:text-base">Психолог і Recovery Specialist. Спеціалізуюся на методах, що мають доведену ефективність: когнітивно-поведінкова терапія, експозиція та десенсибілізація.</p>
+          <p class="mb-6 opacity-80 leading-relaxed text-sm sm:text-base">Психолог і Recovery Specialist. Спеціалізуюся на методах, що мають доведену ефективність: когнітивно‑поведінкова терапія, експозиція та десенсибілізація.</p>
           <p class="mb-8 opacity-80 leading-relaxed text-sm sm:text-base">Моя мета — не просто обговорювати проблеми, а дати вам конкретні інструменти для зміни механізмів, які підтримують розлад.</p>
           <div class="grid grid-cols-2 stats-grid w-full max-w-xs mx-auto sm:mx-0">
             <div class="bg-[#1a1a1a] p-4 stat-item rounded">
@@ -322,133 +371,4 @@
               <span class="text-[10px] uppercase opacity-50">років практики</span>
             </div>
             <div class="bg-[#1a1a1a] p-4 stat-item rounded">
-              <span class="block text-2xl font-serif text-[#c9a86c]">1000+</span>
-              <span class="text-[10px] uppercase opacity-50">випадків</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- SERVICES PAGE -->
-  <div id="page-services" class="page">
-    <section class="pt-24 sm:pt-32 pb-20 px-4 sm:px-6 page-padding">
-      <div class="max-w-4xl mx-auto services-list">
-        <h2 class="font-serif text-4xl sm:text-5xl text-center mb-16">Напрямки роботи</h2>
-        
-        <div class="space-y-6">
-          <div class="bg-[#1a1a1a] service-item border-l-2 border-[#c9a86c] rounded-r">
-            <h3 class="font-serif text-xl sm:text-2xl mb-2">Тривожні розлади та панічні атаки</h3>
-            <p class="opacity-70 text-sm mb-4 font-light">Робота з гіперконтролем, фобіями та соціальною тривогою.</p>
-            <button onclick="navigateTo('contact')" class="text-[#c9a86c] text-xs uppercase tracking-widest hover:underline">Дізнатися деталі →</button>
-          </div>
-
-          <div class="bg-[#1a1a1a] service-item border-l-2 border-[#c9a86c] rounded-r">
-            <h3 class="font-serif text-xl sm:text-2xl mb-2">ОКР (нав'язливо-компульсивний розлад)</h3>
-            <p class="opacity-70 text-sm mb-4 font-light">Використання методу експозиції та запобігання реакціям (ERP).</p>
-            <button onclick="navigateTo('contact')" class="text-[#c9a86c] text-xs uppercase tracking-widest hover:underline">Дізнатися деталі →</button>
-          </div>
-
-          <div class="bg-[#1a1a1a] service-item border-l-2 border-[#c9a86c] rounded-r">
-            <h3 class="font-serif text-xl sm:text-2xl mb-2">Залежна поведінка</h3>
-            <p class="opacity-70 text-sm mb-4 font-light">Терапія залежностей, формування навичок витримки імпульсу.</p>
-            <button onclick="navigateTo('contact')" class="text-[#c9a86c] text-xs uppercase tracking-widest hover:underline">Дізнатися деталі →</button>
-          </div>
-
-          <div class="bg-[#1a1a1a] service-item border-l-2 border-[#c9a86c] rounded-r">
-            <h3 class="font-serif text-xl sm:text-2xl mb-2">Сексуальні дисфункції</h3>
-            <p class="opacity-70 text-sm mb-4 font-light">Психологічна корекція сексуальних розладів, робота з блоками та партнерськими стосунками.</p>
-            <button onclick="navigateTo('contact')" class="text-[#c9a86c] text-xs uppercase tracking-widest hover:underline">Дізнатися деталі →</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-  <!-- CONTACT PAGE -->
-  <div id="page-contact" class="page">
-    <section class="pt-24 sm:pt-32 pb-20 px-4 sm:px-6 page-padding">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="font-serif text-4xl sm:text-5xl mb-12">Зв'язатися зі мною</h2>
-        
-        <div class="contact-grid text-left bg-[#1a1a1a] p-6 sm:p-10 rounded-sm">
-          <div>
-            <h3 class="font-serif text-xl sm:text-2xl mb-6" style="color: var(--color-primary)">Контакти</h3>
-            <div class="space-y-6">
-              <div>
-                <p class="text-[10px] uppercase tracking-[0.2em] opacity-50 mb-2">Телефон / WhatsApp</p>
-                <a href="tel:380986528383" class="text-lg sm:text-xl block hover:text-[#c9a86c] transition-colors">+380 (98) 652-83-83</a>
-              </div>
-              <div>
-                <p class="text-[10px] uppercase tracking-[0.2em] opacity-50 mb-2">Instagram</p>
-                <a href="https://www.instagram.com/psixologgelyya" target="_blank" class="text-lg sm:text-xl block hover:text-[#c9a86c] transition-colors">@psixologgelyya</a>
-              </div>
-            </div>
-          </div>
-
-          <form onsubmit="alert('Дякую! Я зв\\'яжуся з вами.'); return false;" class="space-y-4">
-            <input type="text" placeholder="Ваше ім'я *" required class="form-input w-full bg-[#0f0f0f] border border-white/10 px-4 py-3 text-sm rounded focus:border-[#c9a86c] focus:outline-none">
-            <input type="tel" placeholder="Номер телефону *" required class="form-input w-full bg-[#0f0f0f] border border-white/10 px-4 py-3 text-sm rounded focus:border-[#c9a86c] focus:outline-none">
-            <textarea placeholder="Ваш запит" class="form-input w-full bg-[#0f0f0f] border border-white/10 px-4 py-3 text-sm rounded focus:border-[#c9a86c] focus:outline-none h-28 sm:h-32 resize-vertical"></textarea>
-            <button class="w-full py-4 bg-[#c9a86c] text-black text-xs uppercase font-bold tracking-[0.2em] rounded hover:bg-[#b8945e] transition-colors min-h-[44px]">Надіслати заявку</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- Footer -->
-  <footer class="py-8 sm:py-10 border-t border-white/5 text-center px-4">
-    <p class="font-serif text-base sm:text-lg mb-2" style="color: var(--color-primary)">Водяник Ангеліна Вадимівна</p>
-    <p class="text-xs opacity-40 uppercase tracking-widest">© 2026 Всі права захищено</p>
-  </footer>
-
-  <script>
-    function navigateTo(pageId) {
-      document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-      });
-      document.getElementById('page-' + pageId).classList.add('active');
-      
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('data-page') === pageId) link.classList.add('active');
-      });
-      closeMobileMenu();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('hidden');
-    }
-
-    function closeMobileMenu() {
-      document.getElementById('mobileMenu').classList.add('hidden');
-    }
-
-    // Закриття меню при кліку поза ним
-    document.addEventListener('click', function(event) {
-      const menuBtn = document.querySelector('.mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobileMenu');
-      if (!menuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
-        mobileMenu.classList.add('hidden');
-      }
-    });
-  </script>
-
-  <!-- Кнопки швидкого зв'язку -->
-  <div class="floating-buttons">
-    <a href="https://www.instagram.com/psixologgelyya" target="_blank"
-       class="block bg-[#c9a86c] text-[#0f0f0f] px-4 py-3 rounded-full text-xs font-semibold uppercase no-underline hover:shadow-lg transition-all">
-       Instagram
-    </a>
-    <a href="https://wa.me/380986528383" target="_blank"
-       class="block bg-[#25D366] text-white px-4 py-3 rounded-full text-xs font-semibold uppercase no-underline hover:shadow-lg transition-all">
-       WhatsApp
-    </a>
-  </div>
-
- </body>
-</html>
+              <span class="block text-2xl font-serif text-[#c9a86c]
