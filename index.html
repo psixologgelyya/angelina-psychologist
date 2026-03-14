@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="uk">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Водяник Ангеліна — психолог</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -29,6 +31,9 @@ color:#c9a86c;
 border:1px solid #c9a86c;
 padding:12px 26px;
 transition:.3s;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .btn:hover{
@@ -55,6 +60,38 @@ filter:blur(8px) brightness(.35);
 transform:scale(1.1);
 }
 
+.service-card{
+background:#1a1a1a;
+padding:30px;
+border-radius:10px;
+transition:.35s;
+border:1px solid rgba(201,168,108,.15);
+cursor:pointer;
+}
+
+.service-card:hover{
+transform:translateY(-6px);
+border-color:#c9a86c;
+}
+
+.service-card.active{
+border-color:#c9a86c;
+box-shadow:0 20px 40px rgba(201,168,108,.3);
+}
+
+.service-details{
+max-height:0;
+overflow:hidden;
+transition:.4s;
+}
+
+.service-card.active .service-details{
+max-height:600px;
+margin-top:20px;
+padding-top:20px;
+border-top:1px solid rgba(201,168,108,.2);
+}
+
 .fade{
 opacity:0;
 transform:translateY(40px);
@@ -75,11 +112,36 @@ transition:.4s;
 transform:scale(1.05);
 }
 
+.float{
+position:fixed;
+right:20px;
+bottom:20px;
+display:flex;
+flex-direction:column;
+gap:10px;
+z-index:50;
+}
+
+.float a{
+background:#1a1a1a;
+border:1px solid #c9a86c;
+padding:10px 16px;
+font-size:12px;
+}
+
+@media(max-width:768px){
+
+.hero-title{
+font-size:34px;
+line-height:1.2;
+}
+
+}
+
 </style>
 </head>
 
 <body>
-
 
 <!-- NAV -->
 
@@ -91,24 +153,17 @@ transform:scale(1.05);
 Водяник Ангеліна
 </div>
 
-<div class="flex gap-6 text-sm">
+<div class="flex gap-4 md:gap-8 text-sm">
 
-<div onclick="navigateTo('home')" class="cursor-pointer hover:text-[#c9a86c]">Головна</div>
-
-<div onclick="navigateTo('about')" class="cursor-pointer hover:text-[#c9a86c]">Про мене</div>
-
-<div onclick="navigateTo('services')" class="cursor-pointer hover:text-[#c9a86c]">Послуги</div>
-
-<div onclick="navigateTo('gallery')" class="cursor-pointer hover:text-[#c9a86c]">Галерея</div>
-
-<div onclick="navigateTo('contact')" class="cursor-pointer hover:text-[#c9a86c]">Контакти</div>
+<div onclick="navigateTo('home')" class="cursor-pointer">Головна</div>
+<div onclick="navigateTo('about')" class="cursor-pointer">Про мене</div>
+<div onclick="navigateTo('services')" class="cursor-pointer">Послуги</div>
+<div onclick="navigateTo('gallery')" class="cursor-pointer">Галерея</div>
+<div onclick="navigateTo('contact')" class="cursor-pointer">Контакти</div>
 
 </div>
 </div>
-
 </nav>
-
-
 
 <!-- HOME -->
 
@@ -124,7 +179,7 @@ transform:scale(1.05);
 Психолог • Recovery Specialist
 </p>
 
-<h1 class="font-serif text-6xl mb-6">
+<h1 class="font-serif text-6xl hero-title mb-6">
 Робота з тривогою,
 <span class="primary">ОКР та залежностями</span>
 </h1>
@@ -149,8 +204,6 @@ transform:scale(1.05);
 </section>
 
 </div>
-
-
 
 <!-- ABOUT -->
 
@@ -183,28 +236,78 @@ transform:scale(1.05);
 
 </div>
 
-
-
 <!-- SERVICES -->
 
 <div id="page-services" class="page">
 
-<section class="pt-32 pb-20 text-center px-6">
+<section class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
 
-<h2 class="font-serif text-5xl mb-10">
+<h2 class="font-serif text-5xl text-center mb-16">
 Послуги
 </h2>
 
-<p class="opacity-80 max-w-xl mx-auto">
-Терапія тривожних розладів, ОКР, залежностей,
-панічних атак та індивідуальні консультації.
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="service-card fade" onclick="toggleService(this)">
+<h3 class="font-serif text-2xl primary mb-4">Тривожні розлади</h3>
+<p class="opacity-70 text-sm mb-4">
+Генералізована тривога, соціальна тривожність, панічні атаки.
 </p>
 
-</section>
+<div class="service-details">
+
+<p class="opacity-80 mb-4">
+<span class="primary font-semibold">Методи:</span>
+КПТ, експозиція, когнітивна реструктуризація.
+</p>
+
+<p class="opacity-80">
+<span class="primary font-semibold">Результат:</span>
+зменшення тривоги та стабілізація нервової системи.
+</p>
+
+</div>
+</div>
+
+<div class="service-card fade" onclick="toggleService(this)">
+
+<h3 class="font-serif text-2xl primary mb-4">ОКР</h3>
+
+<p class="opacity-70 text-sm mb-4">
+Терапія нав'язливих думок та ритуалів.
+</p>
+
+<div class="service-details">
+
+<p class="opacity-80">
+ERP терапія — поступове зіткнення з тригерами без виконання ритуалів.
+</p>
 
 </div>
 
+</div>
 
+<div class="service-card fade" onclick="toggleService(this)">
+
+<h3 class="font-serif text-2xl primary mb-4">Залежності</h3>
+
+<p class="opacity-70 text-sm mb-4">
+Алкогольні, наркотичні та поведінкові залежності.
+</p>
+
+<div class="service-details">
+
+<p class="opacity-80">
+Мотиваційне інтерв'ю, КПТ, профілактика рецидивів.
+</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+</div>
 
 <!-- GALLERY -->
 
@@ -229,10 +332,7 @@ transform:scale(1.05);
 </div>
 
 </section>
-
 </div>
-
-
 
 <!-- CONTACT -->
 
@@ -248,27 +348,42 @@ transform:scale(1.05);
 WhatsApp: <span class="primary font-semibold">+380986528383</span>
 </p>
 
-<div class="flex justify-center gap-4 flex-wrap">
+<div class="flex flex-wrap justify-center gap-4 mb-8 max-w-md mx-auto">
 
-<a href="https://www.instagram.com/psixologgelyya" target="_blank" class="btn">
+<a href="https://www.instagram.com/psixologgelyya" target="_blank" class="btn flex-1 min-w-[140px]">
 Instagram
 </a>
 
-<a href="https://www.tiktok.com/@angelina_vodianik?_r=1&_t=ZS-94fIU5SM7rk" target="_blank" class="btn">
+<a href="https://www.tiktok.com/@angelina_vodianik?_r=1&_t=ZS-94fIU5SM7rk"
+target="_blank"
+class="btn flex-1 min-w-[140px]"
+style="background:#ff0050;border-color:#ff0050;">
 TikTok
 </a>
 
-<a href="https://wa.me/380986528383" class="btn">
+<a href="https://wa.me/380986528383" class="btn flex-1 min-w-[140px]">
 WhatsApp
 </a>
 
 </div>
 
 </section>
-
 </div>
 
+<!-- FLOAT -->
 
+<div class="float">
+
+<a href="https://wa.me/380986528383">WhatsApp</a>
+
+<a href="https://www.instagram.com/psixologgelyya">Instagram</a>
+
+<a href="https://www.tiktok.com/@angelina_vodianik?_r=1&_t=ZS-94fIU5SM7rk"
+style="background:#ff0050;border-color:#ff0050;">
+TikTok
+</a>
+
+</div>
 
 <script>
 
@@ -282,6 +397,10 @@ document.getElementById("page-"+page).classList.add("active")
 
 window.scrollTo({top:0,behavior:"smooth"})
 
+}
+
+function toggleService(card){
+card.classList.toggle("active")
 }
 
 const observer=new IntersectionObserver(entries=>{
