@@ -74,6 +74,7 @@ border-color:#c9a86c;
 .service-details{
 display:none;
 margin-top:15px;
+line-height:1.6;
 }
 
 .service-card.active .service-details{
@@ -96,8 +97,6 @@ transform:scale(1.05);
 </head>
 
 <body>
-
-<!-- NAV -->
 
 <nav class="fixed top-0 left-0 right-0 bg-black border-b border-white/10 z-50">
 
@@ -173,13 +172,11 @@ transform:scale(1.05);
 </h2>
 
 <p class="opacity-80 mb-4">
-Я психолог і Recovery Specialist.
-Працюю з тривожними розладами, ОКР та залежностями.
+Я психолог і Recovery Specialist. Працюю з тривожними розладами, ОКР та залежностями.
 </p>
 
 <p class="opacity-80">
-Використовую когнітивно-поведінкову терапію,
-експозицію та десенсибілізацію.
+У роботі використовую когнітивно-поведінкову терапію, експозицію та десенсибілізацію.
 </p>
 
 </section>
@@ -199,56 +196,95 @@ transform:scale(1.05);
 <div class="grid md:grid-cols-3 gap-8">
 
 <div class="service-card" onclick="toggleService(this)">
-<h3 class="font-serif text-2xl primary mb-4">Тривожні розлади</h3>
-<p>Робота з генералізованою тривогою та фобіями.</p>
+<h3 class="font-serif text-2xl primary mb-4">Робота з ОКР</h3>
 
 <div class="service-details">
-<p>Зниження гіперконтролю та тренування нервової системи.</p>
+
+<p>ОКР — це цикл:</p>
+<p>нав’язлива думка → тривога → ритуал → тимчасове полегшення → посилення циклу</p>
+
+<p>Ми розриваємо цей цикл:</p>
+
+<ul>
+<li>• без боротьби з думками</li>
+<li>• без переконування себе</li>
+<li>• без нескінченного аналізу</li>
+</ul>
+
+<p>Через поступову десенсибілізацію та зміну реакції.</p>
+
 </div>
 </div>
 
 <div class="service-card" onclick="toggleService(this)">
-<h3 class="font-serif text-2xl primary mb-4">ОКР</h3>
-<p>Нав'язливі думки та ритуали.</p>
+<h3 class="font-serif text-2xl primary mb-4">Тривожні розлади</h3>
 
 <div class="service-details">
-<p>Робота з циклом ОКР через експозицію.</p>
+
+<p>При тривожних розладах ми:</p>
+
+<ul>
+<li>• знижуємо гіперконтроль</li>
+<li>• працюємо з катастрофізацією</li>
+<li>• тренуємо нервову систему витримувати невизначеність</li>
+<li>• перебудовуємо поведінкові стратегії</li>
+</ul>
+
+<p>Тривога не зникає назавжди. Але вона перестає керувати життям.</p>
+
 </div>
 </div>
 
 <div class="service-card" onclick="toggleService(this)">
 <h3 class="font-serif text-2xl primary mb-4">Залежності</h3>
-<p>Алкогольні та поведінкові залежності.</p>
 
 <div class="service-details">
-<p>Формування нових стратегій реагування.</p>
+
+<p>Залежність — це нейронний цикл:</p>
+
+<p>тригер → імпульс → вживання → тимчасове полегшення → посилення зв’язку</p>
+
+<ul>
+<li>• розрив цього циклу</li>
+<li>• формування витримки імпульсу</li>
+<li>• стабілізація нервової системи</li>
+<li>• створення нової поведінкової моделі</li>
+</ul>
+
 </div>
 </div>
 
 <div class="service-card" onclick="toggleService(this)">
-<h3 class="font-serif text-2xl primary mb-4">Сексуальні труднощі</h3>
-<p>Робота з сексуальними дисфункціями.</p>
+<h3 class="font-serif text-2xl primary mb-4">Сексуальні дисфункції</h3>
 
 <div class="service-details">
-<p>Конфіденційна терапія без осуду.</p>
-</div>
-</div>
 
-<div class="service-card" onclick="toggleService(this)">
-<h3 class="font-serif text-2xl primary mb-4">Панічні атаки</h3>
-<p>Робота зі страхом втрати контролю.</p>
+<p>Сексуальність іноді стає способом зняти тривогу або уникнути почуттів.</p>
 
-<div class="service-details">
-<p>Експозиція та стабілізація нервової системи.</p>
+<p>Я працюю з такими запитами:</p>
+
+<ul>
+<li>• зниження або відсутність лібідо</li>
+<li>• труднощі з оргазмом</li>
+<li>• еректильні труднощі</li>
+<li>• передчасна еякуляція</li>
+<li>• нав’язливе використання порно</li>
+<li>• втрата контролю над імпульсами</li>
+</ul>
+
+<p>Робота проходить конфіденційно та без осуду.</p>
+
 </div>
 </div>
 
 <div class="service-card">
 <h3 class="font-serif text-2xl primary mb-4">Онлайн консультація</h3>
-<p>Zoom / Google Meet</p>
 
 <div class="service-details">
+
+<p>Zoom / Google Meet</p>
 <p>Тривалість: 60–75 хв</p>
+
 </div>
 </div>
 
@@ -341,4 +377,3 @@ card.classList.toggle("active");
 
 </body>
 </html>
-
